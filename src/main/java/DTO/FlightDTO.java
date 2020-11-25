@@ -15,15 +15,11 @@ import utils.RequestBody;
 public class FlightDTO {
     private String destination_from;
     private String destination_to;
-    private String departure_time;
-    private String arrivel_time;
-    private String price;
+    private int price;
 
-    public FlightDTO(Flight flight, RequestBody rb) {
+    public FlightDTO(Flight flight) {
         this.destination_from = flight.getDestination_from();
         this.destination_to = flight.getDestination_to();
-        this.departure_time = departureDatoAndTime(flight.getDeparture_time());
-        this.arrivel_time = arrivelDatoAndTime(rb.getArrivel_time());
         this.price = flight.getPrice();
     }
     

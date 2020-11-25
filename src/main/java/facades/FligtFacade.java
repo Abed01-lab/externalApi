@@ -48,11 +48,12 @@ public class FligtFacade {
     
     public List<FlightDTO> getFlightWithRequest(RequestBody rb) {
         EntityManager em = getEntityManager();
-        TypedQuery<Flight> query = em.createQuery("SELECT f FROM Flight f WHERE f.destination_to =: destination" , Flight.class);
+        System.out.println("asdasdsa" + rb.toString());
+        TypedQuery<Flight> query = em.createQuery("SELECT f FROM Flight f WHERE f.destination_to = :destination" , Flight.class);
         query.setParameter("destination", rb.getDestination_to());
         List<FlightDTO> flights = new ArrayList();
         for (Flight flight : query.getResultList()){
-            flights.add(new FlightDTO(flight, rb));
+            flights.add(new FlightDTO(flight));
         }
         return flights;
     }
